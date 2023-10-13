@@ -4,12 +4,7 @@ const port = 3000;
 const url = require('url');
 const querystring = require('querystring');
 
-const con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "patients"
-});
+var con = mysql.createConnection({ host: "isalab5.mysql.database.azure.com", user: "root_1", password: "Isapassword12", database: "patients", port: 3306 });
 
 // create table if it doesn't exist yet
 con.connect(function (err) {
@@ -57,7 +52,7 @@ const server = http.createServer((req, res) => {
         con.connect(function (err) {
 
             console.log("Connected");
-            
+
             con.query(sqlQuery, function (err, result) {
 
                 if (err) throw err;
