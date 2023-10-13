@@ -8,10 +8,8 @@ var con = mysql.createConnection({ host: "isalab5.mysql.database.azure.com", use
 
 // create table if it doesn't exist yet
 con.connect(function (err) {
-    if (err) throw err;
 
     con.query("SHOW TABLES LIKE 'patient'", function (err, result) {
-        if (err) throw err;
 
         if (result.length === 0) {
             const createTableSQL = `
@@ -23,7 +21,6 @@ con.connect(function (err) {
     `;
 
             con.query(createTableSQL, function (err) {
-                if (err) throw err;
                 console.log('Table "patient" created successfully with InnoDB engine');
             });
         } else {
@@ -54,8 +51,6 @@ const server = http.createServer((req, res) => {
             console.log("Connected");
 
             con.query(sqlQuery, function (err, result) {
-
-                if (err) throw err;
 
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
