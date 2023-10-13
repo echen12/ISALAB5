@@ -48,7 +48,7 @@ const server = http.createServer((req, res) => {
 
         con.connect(function (err) {
 
-            console.log("Connected");
+            console.log(sqlQuery);
 
             con.query(sqlQuery, function (err, result) {
 
