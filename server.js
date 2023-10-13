@@ -11,7 +11,7 @@ con.connect(function (err) {
 
     con.query("SHOW TABLES LIKE 'patient'", function (err, result) {
 
-        if (result.length === 0) {
+        if (result !== undefined && result.length === 0) {
             const createTableSQL = `
             CREATE TABLE patient (
             id INT AUTO_INCREMENT PRIMARY KEY,
