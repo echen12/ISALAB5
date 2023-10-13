@@ -48,10 +48,8 @@ const server = http.createServer((req, res) => {
 
         con.connect(function (err) {
 
-            console.log(sqlQuery);
-
             con.query(sqlQuery, function (err, result) {
-
+                console.log(result)
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
                 res.setHeader('Access-Control-Allow-Origin', '*')
@@ -73,6 +71,9 @@ const server = http.createServer((req, res) => {
                 console.log("Connected");
                 let sql = "INSERT INTO `patient`(`name`, `dateOfBirth`) VALUES ('Sara Brown','1901-01-01'), ('John Smith', '1941-01-01'), ('Jack Ma', '1961-01-31'), ('Elon Musk', '1999-01-01')"
                 con.query(sql, function (err, result) {
+
+                    console.log(err)
+
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
                     res.setHeader('Access-Control-Allow-Origin', '*')
